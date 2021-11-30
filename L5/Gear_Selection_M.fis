@@ -1,0 +1,69 @@
+[System]
+Name='Gear_Selection_M'
+Type='mamdani'
+Version=2.0
+NumInputs=2
+NumOutputs=1
+NumRules=25
+AndMethod='min'
+OrMethod='max'
+ImpMethod='min'
+AggMethod='max'
+DefuzzMethod='mom'
+
+[Input1]
+Name='Speed'
+Range=[0 80]
+NumMFs=5
+MF1='Just_Rolling':'trapmf',[0 0 8 13]
+MF2='Slow':'trapmf',[8 13 23 28]
+MF3='Medium':'trapmf',[23 28 48 53]
+MF4='Speeding':'trapmf',[63 68 80 80]
+MF5='Fast':'trapmf',[48 53 63 68]
+
+[Input2]
+Name='Incline'
+Range=[-15 15]
+NumMFs=5
+MF1='Steep':'trapmf',[-15 -15 -11 -9]
+MF2='Flat':'trimf',[-3 0 3]
+MF3='Climb':'trapmf',[9 11 15 15]
+MF4='Slope':'trapmf',[-11 -9 -2 0]
+MF5='Up':'trapmf',[0 2 9 11]
+
+[Output1]
+Name='Gear'
+Range=[1 5]
+NumMFs=5
+MF1='Gear_1':'trimf',[1 1 1]
+MF2='Gear_2':'trimf',[2 2 2]
+MF3='Gear_3':'trimf',[3 3 3]
+MF4='Gear_5':'trimf',[5 5 5]
+MF5='Gear_4':'trimf',[4 4 4]
+
+[Rules]
+1 1, 2 (1) : 1
+1 4, 1 (1) : 1
+1 3, 1 (1) : 1
+1 2, 1 (1) : 1
+1 5, 1 (1) : 1
+2 1, 3 (1) : 1
+2 2, 2 (1) : 1
+2 4, 2 (1) : 1
+2 5, 1 (1) : 1
+2 3, 1 (1) : 1
+3 1, 5 (1) : 1
+3 4, 5 (1) : 1
+3 2, 3 (1) : 1
+3 5, 3 (1) : 1
+3 3, 2 (1) : 1
+4 1, 4 (1) : 1
+4 4, 4 (1) : 1
+4 2, 4 (1) : 1
+4 5, 5 (1) : 1
+4 3, 5 (1) : 1
+5 1, 4 (1) : 1
+5 4, 4 (1) : 1
+5 2, 5 (1) : 1
+5 5, 5 (1) : 1
+5 3, 5 (1) : 1
